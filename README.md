@@ -10,4 +10,5 @@
 | Server | 
 | ------ |
 | [plugins/nestjs/README.md](https://github.com/nestjs/nest) |
+| [plugins/mongoose/README.md](https://github.com/Automattic/mongoose) |
 | [plugins/bcrypt/README.md](https://github.com/kelektiv/node.bcrypt.js) |
