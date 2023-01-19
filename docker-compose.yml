@@ -1,0 +1,35 @@
+version: '3.7'
+services:
+  api: 
+    container_name: nestjs-dashboard
+    image: nestjs-dashboard:0.0.1
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - 3000:3000
+    command: npm run start:dev
+    environment:
+      MONGO_URI: mongodb://mongo_db:27017/netflix
+    depends_on:
+      - mongo_db
+    volumes:
+    - .:/usr/src/app
+    - /usr/src/app/node_modules
+    networks:
+    - nest-demo-network
+  mongo_db:
+    container_name: mongo_db
+    image: mongo:latest
+    restart: always
+    volumes:
+      - mongo_db:/data/db
+    networks:
+      - nest-demo-network
+networks:
+  # All container connect in a network
+  nest-demo-network:
+    driver: bridge
+volumes:
+  mongo_db: {}
